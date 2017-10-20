@@ -43,8 +43,66 @@ void setup() {
 
   //analogWrite(9, 0);
   //analogWrite(10, 0);
+  while (num_loop<=25)
+  {
+    analogWrite(led,brightness);
+
+    analogWrite(10,brightness);
+
+    analogWrite(9,brightness);
+    
+    brightness = brightness + fadeAmount;
+    num_loop++;
+    if (brightness <= 0 || brightness >= 255) 
+    {
+      fadeAmount = -fadeAmount;      
+    }
+    if ( num_loop<=1 )
+    {
+       delay(3000);
+    }
+    else
+       delay(10);
+  }
 
 }
+
+// the loop routine runs over and over again forever:
+void loop() {
+  // set the brightness of pin 9:
+  // analogWrite(led,brightness);
+  // https://distantorion.com/2014/10/24/motor-control/: how to change motor speed The interface to 
+  // command the ESC called PWM, pulse width modulation, where the pulse width will carry the value, 
+  // wide pulse means high value, thin pulse means low value
+
+  //analogWrite(led,0);
+  //analogWrite(10,0);
+  delay(50);  
+  /////////////////////////////////
+  
+  
+////////////////////////////////
+//
+  analogWrite(led,100);
+  analogWrite(10,100);
+  analogWrite(9,100);
+  delay(20000);
+  analogWrite(led,0);
+  analogWrite(10,0);
+  analogWrite(9,0);
+   
+  while(1)
+  {
+    
+   }
+   
+}
+
+
+
+
+
+
 void setPwmFrequency(int pin, int divisor) {
   byte mode;
   if(pin == 5 || pin == 6 || pin == 9 || pin == 10) {
@@ -83,102 +141,6 @@ void setPwmFrequency(int pin, int divisor) {
     }
     TCCR2B = TCCR2B & 0b11111000 | mode;
   }
-}
-// the loop routine runs over and over again forever:
-void loop() {
-  // set the brightness of pin 9:
-  // analogWrite(led,brightness);
-  // https://distantorion.com/2014/10/24/motor-control/: how to change motor speed The interface to 
-  // command the ESC called PWM, pulse width modulation, where the pulse width will carry the value, 
-  // wide pulse means high value, thin pulse means low value
-  while (num_loop<=25)
-  {
-    analogWrite(led,brightness);
-
-    analogWrite(10,brightness);
-
-    analogWrite(9,brightness);
-    
-    brightness = brightness + fadeAmount;
-    num_loop++;
-    if (brightness <= 0 || brightness >= 255) 
-    {
-      fadeAmount = -fadeAmount;      
-    }
-    if ( num_loop<=1 )
-    {
-       delay(3000);
-    }
-    else
-       delay(10);
-  }
-  //analogWrite(led,0);
-  //analogWrite(10,0);
-  delay(50);  
-  /////////////////////////////////
-  
-  
-////////////////////////////////
-//
-  analogWrite(led,100);
-  analogWrite(10,100);
-  analogWrite(9,100);
-  delay(20000);
-  analogWrite(led,0);
-  analogWrite(10,0);
-  analogWrite(9,0);
-//
-//   
-//     
-analogWrite(led,79);
-//  analogWrite(10,79);
-//delay(300);
-//     analogWrite(led,81);
-//  analogWrite(10,81);
-//  delay(300);
-//     analogWrite(led,83);
-//  analogWrite(10,83);
-//delay(400);
-//     analogWrite(led,85);
-//  analogWrite(10,85);
-//  delay(400);
-//     analogWrite(led,87);
-//  analogWrite(10,87);
-//delay(400);
-//     analogWrite(led,89);
-//  analogWrite(10,89);
-// delay(400); 
-//  analogWrite(led,97);
-//  analogWrite(10,97);
-//
-// delay(400); 
-//  analogWrite(led,150);
-//  analogWrite(10,150);
-  
-//  analogWrite(led,77);
-//  analogWrite(10,77)
-;
-
-  //erpm=rpm*(no of pairs pole)
-  
-//  delay(30000); 
-//  
-// analogWrite(led,0);
-//  
-// analogWrite(10,0);
-//  
-//analogWrite(9,0);
-   
-  while(1)
-
-  
-  {
-    
-    
-   }
-    
-  // wait for 5000 milliseconds to see the dimming effect
-  // delay(3000);
 }
 
 
